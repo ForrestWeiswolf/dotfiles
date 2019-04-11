@@ -1,0 +1,20 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.minimap.enabled": false,
+  "editor.selectionHighlight": false,
+  "workbench.startupEditor": "none",
+  "typescript.check.npmIsInstalled": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "prettier.eslintIntegration": true,
+  "editor.detectIndentation": true,
+  "gitlens.blame.avatars": false,
+  "gitlens.blame.heatmap.enabled": false,
+  "gitlens.currentLine.enabled": false,
+  "window.zoomLevel": 0,
+  "workbench.statusBar.feedback.visible": false,
+  "[html]": {
+    "editor.wordWrap": "on",
+  },
+}
