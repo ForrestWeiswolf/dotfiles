@@ -1,0 +1,13 @@
+HookyQR.beautify
+bierner.markdown-preview-github-styles
+christian-kohler.path-intellisense
+dbaeumer.vscode-eslint
+eamodio.gitlens
+esbenp.prettier-vscode
+formulahendry.auto-close-tag
+formulahendry.auto-rename-tag
+mdickin.markdown-shortcuts
+ms-python.python
+ms-vscode.vscode-typescript-tslint-plugin
+vincaslt.highlight-matching-tag
+ybaumes.highlight-trailing-white-spaces
