@@ -40,9 +40,8 @@ alias te="code" # te for text editor
 alias py="python3"
 alias gac="git add . && git commit -m"
 alias amend="git commit --amend --no-edit"
-
-alias convert-webm="for i in webm/*.webm; do ffmpeg -i \$i \"\${webm/i%.webm}\".mp4; done"
-alias convert-flac="for i in *.flac; do ffmpeg -i $i -ab 320k -map_metadata 0 -id3v2_version 3 "${i%.flac}".mp3; done"
+alias pullm="git fetch origin master:master"
+alias prune="git checkout master && git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
 
 mkto(){
 	mkdir $1 && cd $1
