@@ -47,8 +47,22 @@ mkto(){
 	mkdir $1 && cd $1
 }
 
+trash-item(){
+  local NAME=$(basename $1);  if [ -e ~/.Trash/$NAME ]
+  then
+    local TIME=$(date +"%H.%M.%S");
+    NAME="$NAME $TIME";
+    mv $1 ~/.Trash/$NAME;
+  else
+    mv $1 ~/.Trash/$NAME
+  fi
+}
+
 trash(){
-	mv $1 ~/.Trash/$1
+  for var in "$@"
+  do
+      trash-item "$var"
+  done
 }
 
 # clone a git repo, cd into it, npm install and open it in my text editor
