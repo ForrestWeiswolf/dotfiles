@@ -78,6 +78,15 @@ ninit() {
 	&& curl https://www.gitignore.io/api/node,macos > .gitignore && git add . && git commit -m "Setup" && code .
 }
 
+# like ninit but with typescript
+tsinit() {
+	mkto $1 && yarn init && git init \
+	&& yarn add -D jest typescript \
+	&& npx tsc --init \
+	&& mkdir src mkdir test && touch src/index.ts && touch README.md \
+	&& curl https://www.gitignore.io/api/node,macos > .gitignore && git add . && git commit -m "Setup" && code .
+}
+
 html-boilerplate(){
 	echo -e "<!DOCTYPE html>"
 	echo -e "<html lang=\"en\">"
