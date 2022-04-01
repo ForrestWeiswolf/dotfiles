@@ -94,6 +94,3 @@ html-boilerplate(){
 html(){
 	html-boilerplate $1 > $1.html && g add $1.html && g commit -m "Created HTML file"
 }
-
-# used to have a bunch of shell functions here to create different types of React component, 
-# but nowadays I use mkjsx instead
