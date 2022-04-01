@@ -72,8 +72,8 @@ nclone() {
 
 # shortcut for a bunch of steps typical for starting a project using node.js
 ninit() {
-	mkto $1 && npm init && git init \
-	&& npm i -D jest \
+	mkto $1 && yarn init && git init \
+	&& yarn add -D jest \
 	&& touch index.js && touch README.md \
 	&& curl https://www.gitignore.io/api/node,macos > .gitignore && git add . && git commit -m "Setup" && code .
 }
