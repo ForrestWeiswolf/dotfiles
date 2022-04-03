@@ -75,16 +75,18 @@ ninit() {
 	mkto $1 && yarn init && git init \
 	&& yarn add -D jest \
 	&& touch index.js && touch README.md \
-	&& curl https://www.gitignore.io/api/node,macos > .gitignore && git add . && git commit -m "Setup" && code .
+	&& curl https://www.gitignore.io/api/node,macos > .gitignore \
+	&& git branch -M main && git add . && git commit -m "Setup" && code .
 }
 
 # like ninit but with typescript
-tsinit() {
+tinit() {
 	mkto $1 && yarn init && git init \
 	&& yarn add -D jest typescript \
 	&& npx tsc --init \
 	&& mkdir src mkdir test && touch src/index.ts && touch README.md \
-	&& curl https://www.gitignore.io/api/node,macos > .gitignore && git add . && git commit -m "Setup" && code .
+	&& curl https://www.gitignore.io/api/node,macos > .gitignore \
+	&& git branch -M main && git add . && git commit -m "Setup" && code .
 }
 
 html-boilerplate(){
