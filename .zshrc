@@ -42,6 +42,7 @@ alias gac="git add . && git commit -m"
 alias amend="git commit --amend --no-edit"
 alias pullm="git fetch origin master:master"
 alias prune="git checkout master && git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
+alias bell="print -n \"\a\""
 
 mkto(){
 	mkdir $1 && cd $1
