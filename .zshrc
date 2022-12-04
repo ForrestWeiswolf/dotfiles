@@ -131,3 +131,7 @@ fconv-multi(){
 	mkdir ${1:r}
 	for i in {3..$len..2}; do fconv-name $1 $2 $argv[i] $argv[i+1] ${1:r}/$count.mp4 && count=$((count+1)); done
 }
+
+transcribe(){
+	vosk-transcriber -i $1 -o ${1:r}.txt
+}
