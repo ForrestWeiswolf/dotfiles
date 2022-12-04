@@ -67,18 +67,17 @@ nclone() {
 # shortcut for a bunch of steps typical for starting a project using node.js
 ninit() {
 	mkto $1 && yarn init \
-	&& curl https://www.gitignore.io/api/node,macos > .gitignore \
+	&& curl -sL https://www.toptal.com/developers/gitignore/api/node,macos > .gitignore \
 	&& git init \
 	&& yarn add -D jest \
 	&& touch index.js && touch README.md \
-	&& curl -sL https://www.gitignore.io/api/node,macos > .gitignore \
 	&& git add . && git commit -m "Setup" && git branch -M main && code .
 }
 
 # like ninit but with typescript
 tinit() {
 	mkto $1 && yarn init \
-	&& curl -sL https://www.gitignore.io/api/node,macos > .gitignore \
+	&& curl -sL https://www.toptal.com/developers/gitignore/api/node,macos > .gitignore \
 	&& git init \
 	&& yarn add -D jest typescript \
 	&& npx tsc --init \
