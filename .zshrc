@@ -61,7 +61,7 @@ trash(){
 
 # clone a git repo, cd into it, npm install and open it in my text editor
 nclone() {
-	git clone $1 && cd ./*(-/om[1]) && npm install && te .
+	git clone $1 && cd ./*(-/om[1]) && yarn install && code .
 }
 
 # shortcut for a bunch of steps typical for starting a project using node.js
