@@ -31,14 +31,7 @@ plugins=(gitfast node)
 
 source $ZSH/oh-my-zsh.sh
 
-alias yt="yarn test"
-alias ys="yarn start"
-alias ya="yarn add"
-alias yad="yarn add --dev"
-
-alias te="code" # te for text editor
 alias py="python3"
-alias gac="git add . && git commit -m"
 alias amend="git commit --amend --no-edit"
 alias pullm="git fetch origin master:master"
 alias prune="git checkout master && git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
