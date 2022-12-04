@@ -101,3 +101,33 @@ html-boilerplate(){
 html(){
 	html-boilerplate $1 > $1.html && g add $1.html && g commit -m "Created HTML file"
 }
+
+fcut-name(){
+	ffmpeg -i $1 -c copy -ss $2 -to $3 $4
+}
+
+fcut(){
+	fcut-name $1 $2 $3 $4 ${1:r}-trimmed.mp4
+}
+
+fcut-multi(){
+	local len=${#*[@]}
+	local count=0
+	mkdir ${1:r}
+	for i in {3..$len..2}; do fcut-name $1 $argv[i] $argv[i+1] ${1:r}/$count.mp4 && count=$((count+1)); done
+}
+
+fconv-name(){
+	ffmpeg -i $1 -vcodec libx265 -tag:v hvc1 -c:a eac3 -b:a 224k -crf 28 -filter:v $2 -ss $3 -to $4 $5
+}
+
+fconv(){
+	fconv-name $1 $2 $3 $4 $1:t
+}
+
+fconv-multi(){
+	local len=${#*[@]}
+	local count=0
+	mkdir ${1:r}
+	for i in {3..$len..2}; do fconv-name $1 $2 $argv[i] $argv[i+1] ${1:r}/$count.mp4 && count=$((count+1)); done
+}
