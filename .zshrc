@@ -33,7 +33,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias py="python3"
 alias amend="git commit --amend --no-edit"
-alias pullm="git fetch origin master:master"
+alias pullm="git fetch origin main:main"
 alias prune="git checkout master && git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
 alias bell="print -n \"\a\""
 
