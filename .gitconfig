@@ -1,0 +1,12 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Forrest Wolf
+	email = forrest.weiswolf@gmail.com
+[init]
+	defaultBranch = main
+[push]
+	default = current
+[alias]
+	amend = commit --amend --no-edit
+[core]
+	editor = code --waits
