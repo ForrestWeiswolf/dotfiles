@@ -5,9 +5,9 @@
 export ZSH=/Users/forrest/.oh-my-zsh
 
 
-export PATH="/anaconda3/bin:$PATH/"
+# export PATH="/anaconda3/bin:$PATH/"
 
-# export PATH="/usr/local/bin/python3:$PATH/"
+export PATH="/usr/local/bin/python3:$PATH/"
 
 # virtualenvwrapper for python 3:
 # source /usr/local/bin/virtualenvwrapper.sh
