@@ -78,9 +78,14 @@ tinit() {
 	mkto $1 && yarn init \
 	&& curl -sL https://www.toptal.com/developers/gitignore/api/node,macos > .gitignore \
 	&& git init \
-	&& yarn add -D jest typescript \
+	&& yarn add -D jest typescript ts-jest @types/jest \
 	&& npx tsc --init \
 	&& mkdir src && mkdir test && touch src/index.ts && touch README.md \
+	&& echo "/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */" >> jest.config.js \
+	&& echo "module.exports = {" >> jest.config.js \
+	&& echo "		preset: 'ts-jest'," >> jest.config.js \
+	&& echo "		testEnvironment: 'node'," >> jest.config.js \
+	&& echo "};" >> jest.config.js \
 	&& git add . && git commit -m "Setup" && git branch -M main && code .
 }
 
