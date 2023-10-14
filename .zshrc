@@ -58,6 +58,11 @@ trash(){
   done
 }
 
+andtrash(){
+	$@ && trash $2
+	# figure out how to pass this the index of thing to trash?
+}
+
 # clone a git repo, cd into it, npm install and open it in my text editor
 nclone() {
 	git clone $1 && cd ./*(-/om[1]) && yarn install && code .
