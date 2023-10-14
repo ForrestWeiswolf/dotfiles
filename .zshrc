@@ -112,18 +112,23 @@ html(){
 }
 
 fcut-name(){
-	ffmpeg -i $1 -c copy -ss $2 -to $3 $4
+	ffmpeg -ss $2 -to $3 -i $1 -c copy  $4
 }
 
 fcut(){
-	fcut-name $1 $2 $3 $4 ${1:r}-trimmed.mp4
-}
-
-fcut-multi(){
 	local len=${#*[@]}
-	local count=0
-	mkdir ${1:r}
-	for i in {3..$len..2}; do fcut-name $1 $argv[i] $argv[i+1] ${1:r}/$count.mp4 && count=$((count+1)); done
+
+	if [[  len -le 3  ]]
+	then
+		fcut-name $1 $2 $3 ${1:r}-trimmed.mp4
+	fi
+
+	if [[  len -gt 3  ]]
+	then
+		local count=0
+		mkdir ${1:t:r}
+		for i in {2..$len..2}; do fcut-name $1 $argv[i] $argv[i+1] ${1:t:r}/${1:t:r}\ $count.mp4 && count=$((count+1)); done
+	fi
 }
 
 fconv-name(){
@@ -131,14 +136,19 @@ fconv-name(){
 }
 
 fconv(){
-	fconv-name $1 $2 $3 $4 $1:t
-}
-
-fconv-multi(){
 	local len=${#*[@]}
-	local count=0
-	mkdir ${1:r}
-	for i in {3..$len..2}; do fconv-name $1 $2 $argv[i] $argv[i+1] ${1:r}/$count.mp4 && count=$((count+1)); done
+
+	if [[  len -le 4  ]]
+	then
+		fconv-name $1 $2 $3 $4 $1:t
+	fi
+
+	if [[  len -gt 4  ]]
+	then
+		local count=0
+		mkdir ${1:t:r}
+		for i in {3..$len..2}; do fconv-name $1 $2 $argv[i] $argv[i+1] ${1:t:r}/${1:t:r}\ $count.mp4 && count=$((count+1)); done
+	fi
 }
 
 transcribe(){
