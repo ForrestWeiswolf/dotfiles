@@ -113,7 +113,7 @@ html-boilerplate(){
 }
 
 html(){
-	html-boilerplate $1 > $1.html && g add $1.html && g commit -m "Created HTML file"
+	html-boilerplate $1 > $1.html && git add $1.html && git commit -m "Created HTML file"
 }
 
 fcut-name(){
