@@ -31,6 +31,10 @@ plugins=(gitfast node)
 
 source $ZSH/oh-my-zsh.sh
 
+export SAVEHIST=50000
+export HISTSIZE=20000
+
+
 alias py="python3"
 alias pullm="git fetch origin main:main"
 alias prune="git checkout master && git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
