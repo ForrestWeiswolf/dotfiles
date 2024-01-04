@@ -67,7 +67,7 @@ andtrash(){
 	# figure out how to pass this the index of thing to trash?
 }
 
-# clone a git repo, cd into it, npm install and open it in my text editor
+# clone a git repo, cd into it, yarn install and open it in my text editor
 nclone() {
 	git clone $1 && cd ./*(-/om[1]) && yarn install && code .
 }
@@ -85,7 +85,7 @@ ninit() {
 # like ninit but with typescript
 tinit() {
 	mkto $1 && yarn init \
-	&& curl -sL https://www.toptal.com/developers/gitignore/api/node,macos > .gitignore \
+	&& curl https://www.toptal.com/developers/gitignore/api/node,macos > .gitignore \
 	&& git init \
 	&& yarn add -D jest typescript ts-jest @types/jest \
 	&& npx tsc --init \
@@ -97,6 +97,7 @@ tinit() {
 	&& echo "};" >> jest.config.js \
 	&& git add . && git commit -m "Setup" && git branch -M main && code .
 }
+
 
 html-boilerplate(){
 	echo -e "<!DOCTYPE html>"
