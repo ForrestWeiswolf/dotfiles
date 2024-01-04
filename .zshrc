@@ -157,5 +157,5 @@ fconv(){
 }
 
 transcribe(){
-	vosk-transcriber -i $1 -o ${1:r}.txt
+	whisper --language English --model base.en --output_format vtt $@
 }
