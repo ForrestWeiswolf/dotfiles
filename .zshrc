@@ -1,29 +1,13 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/forrest/.oh-my-zsh
-
-
-# export PATH="/anaconda3/bin:$PATH/"
 
 export PATH="/usr/local/bin/python3:$PATH/"
 
-# virtualenvwrapper for python 3:
-# source /usr/local/bin/virtualenvwrapper.sh
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/forrestwolf/.oh-my-zsh"
 
-# virtualenvwrapper for python 2:
-# export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin/python2:$PATH"
-# export WORKON_HOME=$HOME/.virtualenvs
-# source /Library/Frameworks/Python.framework/Versions/2.7/bin/virtualenvwrapper_lazy.sh
-
-# function frameworkpython {
-#   if [[ ! -z "$VIRTUAL_ENV" ]]; then
-#      PYTHONHOME=$VIRTUAL_ENV /usr/local/bin/python "$@"
-#   else
-#     /usr/local/bin/python "$@"
-#   fi
-# }
+# export PATH="/usr/local/bin/python3:$PATH/"
 
 ZSH_THEME="theunraveler"
 
