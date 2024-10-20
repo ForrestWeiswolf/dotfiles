@@ -157,5 +157,5 @@ fconv(){
 }
 
 transcribe(){
-	whisper --language English --model base.en --output_format vtt $@
+	whisper --language English --model base.en --output_format txt $@
 }
