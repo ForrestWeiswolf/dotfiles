@@ -156,6 +156,14 @@ fconv(){
 	fi
 }
 
+fextract(){
+	ffmpeg -i $1 -vn -acodec copy ${1:t:r}.aac
+}
+
+fprobe() {
+	ffprobe -v error -show_entries stream=width,height -of default=noprint_wrappers=1 $1
+}
+
 transcribe(){
 	whisper --language English --model base.en --output_format txt $@
 }
