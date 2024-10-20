@@ -37,7 +37,7 @@ export HISTSIZE=20000
 
 alias py="python3"
 alias pullm="git fetch origin main:main"
-alias prune="git checkout master && git branch --merged | egrep -v \"(^\*|master|dev)\" | xargs git branch -d"
+alias prune="git checkout main && git branch --merged | egrep -v \"(^\*|main|dev)\" | xargs git branch -d"
 alias bell="print -n \"\a\""
 
 mkto(){
