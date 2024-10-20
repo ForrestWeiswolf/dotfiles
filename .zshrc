@@ -167,3 +167,7 @@ fprobe() {
 transcribe(){
 	whisper --language English --model base.en --output_format txt $@
 }
+
+move-to-dir() {
+	mv $1 $2/${1:t}
+}
