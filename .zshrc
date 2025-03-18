@@ -123,7 +123,7 @@ fcut(){
 }
 
 fconv-name(){
-	ffmpeg -i $1 -vcodec libx265 -tag:v hvc1 -c:a eac3 -b:a 224k -crf 28 -filter:v $2 -ss $3 -to $4 $5
+	ffmpeg -i $1 -vcodec libx265 -tag:v hvc1 -c:a eac3 -b:a 224k -crf 28 -filter:v $2 -ss $3 -to $4 ${5:r:t}.mp4
 }
 
 fconv(){
