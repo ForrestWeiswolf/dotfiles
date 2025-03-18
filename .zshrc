@@ -180,6 +180,16 @@ move-to-dir() {
 	mv $1 $2/${1:t}
 }
 
+concat-mp3() {
+  for var in "$@"
+	do
+		echo "file './${var:t}'" >> list.txt
+	done
+
+	ffmpeg -f concat -safe 0 -i list.txt -c copy combined.mp3
+	rm list.txt
+}
+
 m4a-convert() {
 	mkdir prev
 	mkdir output
