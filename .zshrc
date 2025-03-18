@@ -154,6 +154,42 @@ transcribe(){
 	whisper --language English --model base.en --output_format txt $@
 }
 
+numeric-rename() {
+	local len=${#*[@]}
+
+	local count=0
+	if [[  len -gt 0  ]]
+	then
+		count=$1
+	fi
+
+	for i in $(ls -rt); do mv $i $count.${i:e} && count=$((count+1)); done
+}
+
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+smaller() {
+	if [[ $( stat -f %z "$1" ) -lt $( stat -f %z "$2" ) ]]; then echo $1; else echo $2; fi
+}
+
+larger() {
+	if [[ $( stat -f %z "$1" ) -lt $( stat -f %z "$2" ) ]]; then echo $2; else echo $1; fi
+}
+
 move-to-dir() {
 	mv $1 $2/${1:t}
+}
+
+m4a-convert() {
+	mkdir prev
+	mkdir output
+	local larger
+	local smaller
+	for i in *.m4a
+	do
+		ffmpeg -i $i -hide_banner -loglevel error -map_metadata:s:a 0:s:a ${i:r}.mp3\
+			&& larger="$(larger $i ${i:r}.mp3)"\
+			&& smaller="$(smaller $i ${i:r}.mp3)"\
+			&& move-to-dir $larger prev && move-to-dir $smaller output
+	done
 }
