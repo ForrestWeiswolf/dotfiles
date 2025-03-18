@@ -1,7 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 chruby ruby-3.1.2
@@ -10,6 +9,8 @@ chruby ruby-3.1.2
 export ZSH="/Users/forrestwolf/.oh-my-zsh"
 
 # export PATH="/usr/local/bin/python3:$PATH/"
+
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 ZSH_THEME="theunraveler"
 
@@ -102,6 +103,36 @@ html(){
 	html-boilerplate $1 > $1.html && git add $1.html
 }
 
+transcribe(){
+	whisper --language English --model base.en --output_format txt $@
+}
+
+numeric-rename() {
+	local len=${#*[@]}
+
+	local count=0
+	if [[  len -gt 0  ]]
+	then
+		count=$1
+	fi
+
+	for i in $(ls -rt); do mv $i $count.${i:e} && count=$((count+1)); done
+}
+
+smaller() {
+	if [[ $( stat -f %z "$1" ) -lt $( stat -f %z "$2" ) ]]; then echo $1; else echo $2; fi
+}
+
+larger() {
+	if [[ $( stat -f %z "$1" ) -lt $( stat -f %z "$2" ) ]]; then echo $2; else echo $1; fi
+}
+
+move-to-dir() {
+	mv $1 $2/${1:t}
+}
+
+# a bunch of shortcuts for ffmpeg commands
+
 fcut-name(){
 	ffmpeg -ss $2 -to $3 -i $1 -c copy  $4
 }
@@ -148,36 +179,6 @@ fextract(){
 
 fprobe() {
 	ffprobe -v error -show_entries stream=width,height -of default=noprint_wrappers=1 $1
-}
-
-transcribe(){
-	whisper --language English --model base.en --output_format txt $@
-}
-
-numeric-rename() {
-	local len=${#*[@]}
-
-	local count=0
-	if [[  len -gt 0  ]]
-	then
-		count=$1
-	fi
-
-	for i in $(ls -rt); do mv $i $count.${i:e} && count=$((count+1)); done
-}
-
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-
-smaller() {
-	if [[ $( stat -f %z "$1" ) -lt $( stat -f %z "$2" ) ]]; then echo $1; else echo $2; fi
-}
-
-larger() {
-	if [[ $( stat -f %z "$1" ) -lt $( stat -f %z "$2" ) ]]; then echo $2; else echo $1; fi
-}
-
-move-to-dir() {
-	mv $1 $2/${1:t}
 }
 
 concat-mp3() {
